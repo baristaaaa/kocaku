@@ -1,0 +1,44 @@
+import greenfoot.*;
+
+public class Monyet extends Actor
+{
+    int poin = 0;
+    int nyawa = 3;
+    
+    Monyet(){
+        getImage().scale(80, 60);
+    }
+    
+    public void act()
+    {
+        movePlayer();
+        
+        if(isTouching(Pisang.class)){
+            poin++;
+            getWorld().showText("Poin : "+poin, 80, 30);
+            removeTouching(Pisang.class);
+        }
+        if(isTouching(Bom.class)){
+            nyawa--;
+            getWorld().showText("Nyawa : "+nyawa, 180, 30);
+            removeTouching(Bom.class);
+            if(nyawa<=0){
+                Greenfoot.setWorld(new GameOver());
+            }
+        }
+        if(isTouching(Hati.class)){
+            nyawa++;
+            getWorld().showText("Nyawa : "+nyawa, 180, 30);
+            removeTouching(Hati.class);
+        }
+    }
+    
+    private void movePlayer(){
+        if(Greenfoot.isKeyDown("left")){
+            move(-5);
+        }
+        if(Greenfoot.isKeyDown("right")){
+            move(5);
+        }
+    }
+}
