@@ -1,0 +1,41 @@
+import greenfoot.*;  
+
+public class MyWorld extends World
+{
+    int pisangTimer = 0;
+
+    public MyWorld()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(300, 600, 1); 
+        prepare();
+    }
+
+    private void prepare()
+    {
+        Monyet monyet = new Monyet();
+        addObject(monyet,164,527);
+    }
+    
+    public void act(){
+        pisangTimer++;
+        if(pisangTimer % 60 == 0){
+            spawnPisang();
+        }
+    }
+    
+    public void spawnPisang(){
+        int x = Greenfoot.getRandomNumber(getWidth());
+        if (x % 8 == 0){
+            Hati h = new Hati();
+            addObject(h, x, 0);
+        }else if (x % 7 == 0){
+            Bom b = new Bom();
+            addObject(b, x, 0);
+        }else{
+            Pisang p = new Pisang();
+            addObject(p, x, 0);
+        }
+    }
+    
+}
