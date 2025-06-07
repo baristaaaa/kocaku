@@ -1,0 +1,18 @@
+import greenfoot.*;
+
+public class Hati extends Actor
+{
+    Hati(){
+        getImage().scale(80, 60);
+    }
+    
+    public void act()
+    {
+        setLocation(getX(),getY()+3);
+            
+        if(isAtEdge()){
+            getWorld().removeObject(this);
+        }
+        
+    }
+}
