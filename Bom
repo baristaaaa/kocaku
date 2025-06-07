@@ -1,0 +1,17 @@
+import greenfoot.*; 
+
+public class Bom extends Actor
+{
+    Bom(){
+        getImage().scale(60, 60);
+    }
+    
+    public void act()
+    {
+        setLocation(getX(),getY()+3);
+        
+        if(isAtEdge()){
+            getWorld().removeObject(this);
+        }
+    }
+}
